@@ -1,0 +1,32 @@
+---
+const frontend_practice = [
+  { directory: "01-ableton", name: "Ableton About Page" },
+]
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Astro</title>
+	</head>
+	<body class="max-w-3xl px-4 mx-auto mt-16 text-gray-800">
+  <header>
+      <h1 class="pb-2 font-mono text-5xl font-black border-b-8 border-yellow-600">Frontend Challenges</h1>
+      <p class="mt-4 text-xl">This is a collection of the challenges I've worked to practice/build my frontend skills. Links to the solutions will show up here as I complete them.</p>
+  </header>
+
+  <main class="mt-8 space-y-8">
+    <div>
+      <h2 class="pb-1 font-mono text-3xl font-bold border-b-8 border-gray-300">Frontend Practice</h2>
+      <ul class="mt-4 ml-6 font-medium tracking-wide uppercase list-none">
+      {frontend_practice.map(({directory, name}) => (
+        <li class="mt-1">
+          <a href={`practice/${directory}`} class="border-b-2 border-gray-300">{name}</a>
+        </li>
+      ))}
+      </ul>
+    </div>
+  </main>
+</body>
+</html>

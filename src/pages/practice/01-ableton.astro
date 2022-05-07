@@ -1,0 +1,251 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn more about Ableton - maker of Live and Push | Ableton</title>
+</head>
+
+<body>
+  <header>
+    <nav class="primary-nav">
+      <input type="checkbox" id="menu-toggle">
+      <input type="checkbox" id="more-toggle">
+      <a class="primary-nav__logo" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 21">
+          <path d="M0,0h3v21h-3z" />
+          <path d="M6,0h3v21h-3z" />
+          <path d="M12,0h3v21h-3z" />
+          <path d="M18,0h3v21h-3z" />
+          <path d="M24,0h21v3h-21z" />
+          <path d="M24,6h21v3h-21z" />
+          <path d="M24,12h21v3h-21z" />
+          <path d="M24,18h21v3h-21z" />
+        </svg>
+      </a>
+      <label class="primary-nav__menu-toggle" for="menu-toggle">Menu</label>
+      <div class="primary-nav__menu-drawer">
+        <ul class="menu-drawer__main">
+          <li class="main-menu__item"><a href="#">Live</a></li>
+          <li class="main-menu__item"><a href="#">Push</a></li>
+          <li class="main-menu__item"><a href="#">Link</a></li>
+          <li class="main-menu__item"><a href="#">Shop</a></li>
+          <li class="main-menu__item"><a href="#">Packs</a></li>
+          <li class="main-menu__item"><a href="#">Help</a></li>
+          <li class="main-menu__item main-menu__item--more">
+            <label class="primary-nav__more-toggle" for="more-toggle">More</label>
+          </li>
+          <li class="main-menu__item main-menu__item--try"><a href="#">Try Live for free</a></li>
+          <li class="main-menu__item main-menu__item--login"><a href="#">Log in or register</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+</body>
+</html>
+
+<style lang="scss">
+@import url(https://fonts.googleapis.com/css2?family=Jost:wght@100..900&display=swap);
+
+body {
+  font-family: Jost, sans-serif;
+  font-weight: 450;
+  letter-spacing: 0.5px;
+}
+
+/* Primary Navigation */
+
+.primary-nav {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-end;
+  position: relative;
+  
+  padding: 1.25rem;
+  border-bottom: 2px solid hsl(0 0% 93%);
+
+  @media (min-width: 80rem) {
+    padding-inline: 2.5rem;
+  }
+}
+
+#menu-toggle {
+  display: none;
+}
+
+#menu-toggle:checked {
+  & ~ .primary-nav__logo {
+    fill: hsl(0 0% 100%);
+    transition: fill 150ms ease-in-out;
+  }
+
+  & ~ .primary-nav__menu-toggle {
+    color: hsl(0 0% 100%);
+    transition: color 150ms ease-in-out;
+  }
+
+  & ~ .primary-nav__menu-toggle::after {
+    border-top: none;
+    border-bottom: 5px solid hsl(0 0% 100%);
+    transition: border-color 150ms ease-in-out;
+  }
+
+  & ~ .primary-nav__menu-drawer {
+    transform: none;
+  }
+}
+
+.primary-nav__logo {
+  display: block;
+  z-index: 1;
+
+  width: 3.75rem;
+  height: 1.75rem;
+
+  transition: fill 150ms 200ms ease-in-out;
+}
+
+.primary-nav__menu-toggle {
+  display: block flex;
+  gap: 0.5rem;
+  align-items: center;
+  z-index: 1;
+
+  height: 1.5rem;
+
+  font-size: 1.125rem;
+
+  transition: color 150ms 200ms ease-in-out;
+  user-select: none;
+
+  @media (min-width: 64rem) {
+    display: none;
+  }
+}
+
+.primary-nav__menu-toggle::after {
+  content: '';
+
+  border-top: 5px solid hsl(0 0% 0%);
+  border-inline: 4px solid transparent;
+  border-bottom: none;
+
+  transition: border-color 150ms 200ms ease-in-out;
+}
+
+.primary-nav__menu-drawer {
+  position: absolute;
+  inset: 0;
+  bottom: auto;
+
+  padding-top: 4.25rem;
+  padding-inline: 1rem;
+
+  background-color: hsl(240 100% 50%);
+  color: hsl(0 0% 100%);
+
+  transform: translateY(-100%);
+  transition: transform 350ms ease-in-out;
+
+  @media (min-width: 64rem) {
+    display: contents;
+    position: static;
+
+    padding-top: 0;
+
+    color: hsl(0 0% 0%);
+  }
+}
+
+.menu-drawer__main {
+  @media (min-width: 64rem) {
+    display: flex;
+    flex: 1;
+    gap: 1.75rem;
+    align-items: center;
+
+    margin-left: 0.5rem;
+  }
+
+  @media (min-width: 80rem) {
+    gap: 2.25rem;
+  }
+}
+
+.main-menu__item {
+  margin-top: 0.25rem;
+  margin-bottom: 1.4375rem;
+
+  font-size: 1.125rem;
+
+  @media (min-width: 64rem) {
+    margin: 0;
+  }
+}
+
+.main-menu__item--login {
+  font-size: 0.75rem;
+}
+
+.main-menu__item--more {
+  display: none;
+
+  color: hsl(14 100% 65%);
+
+  @media (min-width: 64rem) {
+    display: block;
+    flex: 1;
+  }
+}
+
+.main-menu__item--try {
+  @media (min-width: 64rem) {
+    color: hsl(240 100% 50%);
+  }
+}
+
+#more-toggle {
+  display: none;
+}
+
+#more-toggle:checked {
+  & ~ .primary-nav__menu-drawer .primary-nav__more-toggle::before {
+    display: none;
+  }
+}
+
+.primary-nav__more-toggle {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  user-select: none;
+}
+
+.primary-nav__more-toggle::before {
+  content: '';
+
+  position: relative;
+  right: 0.9375rem;
+
+  width: 0.1rem;
+  height: 0.75rem;
+
+  background: hsl(14 100% 65%);
+
+  order: 1;
+}
+
+.primary-nav__more-toggle::after {
+  content: '';
+
+  width: 0.75rem;
+  height: 0.1rem;
+
+  background: hsl(14 100% 65%);
+}
+</style>
