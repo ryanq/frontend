@@ -53,6 +53,33 @@
             <li class="more-on__item"><a href="#">Jobs</a></li>
             <li class="more-on__item"><a href="#">Apprenticeships</a></li>
           </ul>
+          <h3 class="more-from">More from Ableton:</h3>
+          <ul class="primary-nav__more-from">
+            <li class="more-from__item">
+              <a href="#">
+                <h4>Loop</h4>
+                <p>Watch Talks, Performances and Features from Ableton's Summit for Music Makers.</p>
+              </a>
+            </li>
+            <li class="more-from__item">
+              <a href="#">
+                <h4>Learning Music</h4>
+                <p>Learn the fundamentals of music making right in your browser.</p>
+              </a>
+            </li>
+            <li class="more-from__item">
+              <a href="#">
+                <h4>Learning Synths</h4>
+                <p>Get started with synthesis using a web-based synth and accompanying lessons.</p>
+              </a>
+            </li>
+            <li class="more-from__item">
+              <a href="#">
+                <h4>Making Music</h4>
+                <p>Some tips from 74 Creative Strategies for Electronic Producers.</p>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
@@ -275,6 +302,10 @@ body {
   @media (min-width: 64rem) {
     margin-top: 0;
   }
+
+  @media (min-width: 80rem) {
+    margin-top: 1rem;
+  }
 }
 
 .primary-nav__more-drawer h3 {
@@ -282,6 +313,10 @@ body {
 
   @media (min-width: 64rem) {
     font-size: 1.375rem;
+  }
+
+  @media (min-width: 80rem) {
+    font-size: 1.75rem;
   }
 }
 
@@ -291,6 +326,12 @@ body {
     gap: 1.5rem;
 
     margin-top: 0.5rem;
+  }
+
+  @media (min-width: 80rem) {
+    gap: 2.25rem;
+    
+    margin-top: 0.875rem;
   }
 }
 
@@ -305,9 +346,58 @@ body {
 
     font-size: 0.875rem;
   }
+
+  @media (min-width: 80rem) {
+    font-size: 1.125rem;
+  }
 }
 
 .more-on__item--current {
   color: hsl(14 100% 65%);
+}
+
+.more-from {
+  margin-top: 1.75rem;
+
+  @media (min-width: 80rem) {
+    margin-top: 2.75rem;
+  }
+}
+
+.primary-nav__more-from {
+  display: flex;
+  gap: 1rem;
+
+  margin-top: 0.75rem;
+
+  overflow-x: scroll;
+
+  @media (min-width: 64rem) {
+    margin-top: 0.25rem;
+  }
+
+  @media (min-width: 80rem) {
+    margin-top: 0.75rem;
+  }
+}
+
+.more-from__item {
+  flex: 1 0 12rem;
+  
+  font-size: 0.75rem;
+  font-weight: 350;
+  line-height: 1.8;
+
+  @media (min-width: 64rem) {
+    font-size: 0.875rem;
+  }
+
+  @media (min-width: 80rem) {
+    font-size: 1.125rem;
+  }
+}
+
+.more-from__item h4 {
+  font-weight: 450;
 }
 </style>
