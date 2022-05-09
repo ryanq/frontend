@@ -42,6 +42,18 @@
           <li class="main-menu__item main-menu__item--try"><a href="#">Try Live for free</a></li>
           <li class="main-menu__item main-menu__item--login"><a href="#">Log in or register</a></li>
         </ul>
+        <div class="primary-nav__more-drawer">
+          <h3 class="more-on">More on Ableton.com:</h3>
+          <ul class="primary-nav__more-on">
+            <li class="more-on__item"><a href="#">Blog</a></li>
+            <li class="more-on__item"><a href="#">Ableton for the Classroom</a></li>
+            <li class="more-on__item"><a href="#">Ableton for Colleges and Universities</a></li>
+            <li class="more-on__item"><a href="#">Certified Training</a></li>
+            <li class="more-on__item more-on__item--current"><a href="#">About Ableton</a></li>
+            <li class="more-on__item"><a href="#">Jobs</a></li>
+            <li class="more-on__item"><a href="#">Apprenticeships</a></li>
+          </ul>
+        </div>
       </div>
     </nav>
   </header>
@@ -62,6 +74,7 @@ body {
 .primary-nav {
   display: flex;
   gap: 2rem;
+  flex-wrap: wrap;
   align-items: flex-end;
   position: relative;
   
@@ -216,6 +229,10 @@ body {
   & ~ .primary-nav__menu-drawer .primary-nav__more-toggle::before {
     display: none;
   }
+
+  & ~ .primary-nav__menu-drawer .primary-nav__more-drawer {
+    display: block;
+  }
 }
 
 .primary-nav__more-toggle {
@@ -247,5 +264,50 @@ body {
   height: 0.1rem;
 
   background: hsl(14 100% 65%);
+}
+
+.primary-nav__more-drawer {
+  display: none;
+  flex: 1 0 100%;
+  
+  margin-top: 1.75rem;
+
+  @media (min-width: 64rem) {
+    margin-top: 0;
+  }
+}
+
+.primary-nav__more-drawer h3 {
+  font-size: 1.125rem;
+
+  @media (min-width: 64rem) {
+    font-size: 1.375rem;
+  }
+}
+
+.primary-nav__more-on {
+  @media (min-width: 64rem) {
+    display: flex;
+    gap: 1.5rem;
+
+    margin-top: 0.5rem;
+  }
+}
+
+.more-on__item {
+  margin-top: 1rem;
+  
+  font-size: 0.75rem;
+  font-weight: 350;
+
+  @media (min-width: 64rem) {
+    margin-top: 0;
+
+    font-size: 0.875rem;
+  }
+}
+
+.more-on__item--current {
+  color: hsl(14 100% 65%);
 }
 </style>
