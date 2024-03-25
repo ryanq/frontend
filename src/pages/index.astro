@@ -1,16 +1,212 @@
 ---
+import { getCollection } from "astro:content"
 
+const fp1 = await getCollection('frontend_projects', ({ data }) => data.source === "Frontend Practice" && data.level === 1)
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/frontend/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Frontend Development Projects</title>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 	</head>
 	<body>
-		<h1>Astro</h1>
-	</body>
+		<main class="grid">
+      <h1>Frontend Development Projects</h1>
+      
+      <section class="flow">
+        <p>
+          I've always found the best way to learn for me is to build something. And I want to get
+          better with my skills working in the frontend side of the web, so here we are. These are
+          links to all my projects practicing HTML, CSS, and JavaScript. In the spirit of
+          <a href="https://notes.andymatuschak.org/z21cgR9K3UcQ5a7yPsj2RUim3oM2TzdBByZu">working
+          with the garage door up</a>, the public versions will update as I work on them. I'll try
+          to write about anything interesting I learn. No promises. 😂
+        </p>
+
+        <aside>
+          Keep in mind that projects that aim to duplicate actual web pages may not look the same if
+          the original changes...
+        </aside>
+      </section>
+  
+      <h2>Frontend Practice</h2>
+  
+      <h3>Level 1</h3>
+      {fp1
+        .map(({ data: project }) => (
+      <article class="project" style={project.colors.accent ? `--c-accent: ${project.colors.accent}` : ""}>
+        <h4><a href={project.links.live}>{project.name}</a></h4>
+  
+        <div class="row with-space at-end">
+          {project.links.original && <a href={project.links.original}>original</a>}
+          {project.links.project && <a href={project.links.project}>project</a>}
+        </div>
+  
+        {project.topics && project.topics.length != 0 &&
+        <ul class="tokens row" role="list" style={project.colors.tokens ? `--c-tokens: ${project.colors.tokens}` : ""}>
+          {project.topics.map((topic) => (<li class="as-pill">{topic}</li>))}
+        </ul>
+        }
+      </article>
+      ))}
+    </main>
+  </body>
 </html>
+
+<style>
+  @import url(https://fonts.googleapis.com/css2?family=Anybody:ital,wdth,wght@0,125,100..900;1,125,100..900&display=swap);
+  @import url(/css/reset.css) layer(reset);
+  
+  @layer {
+    :root {
+      --c-accent: steelblue;
+
+      /* @link https://utopia.fyi/type/calculator?c=375,18,1.2,1280,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+      --fs--2: clamp(0.7813rem, 0.7735rem + 0.0331vi, 0.8rem);
+      --fs--1: clamp(0.9375rem, 0.9116rem + 0.1105vi, 1rem);
+      --fs-0: clamp(1.125rem, 1.0732rem + 0.221vi, 1.25rem);
+      --fs-1: clamp(1.35rem, 1.2619rem + 0.3757vi, 1.5625rem);
+      --fs-2: clamp(1.62rem, 1.482rem + 0.589vi, 1.9531rem);
+      --fs-3: clamp(1.944rem, 1.7379rem + 0.8794vi, 2.4414rem);
+      --fs-4: clamp(2.3328rem, 2.0349rem + 1.2711vi, 3.0518rem);
+      --fs-5: clamp(2.7994rem, 2.3786rem + 1.7951vi, 3.8147rem);
+
+      /* @link https://utopia.fyi/space/calculator?c=375,18,1.2,1280,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l|m-xl&g=s,l,xl,12 */
+      --sp-4xs: clamp(0.3125rem, 0.3125rem + 0vi, 0.3125rem);
+      --sp-3xs: clamp(0.3125rem, 0.3125rem + 0vi, 0.3125rem);
+      --sp-2xs: clamp(0.5625rem, 0.5366rem + 0.1105vi, 0.625rem);
+      --sp-xs: clamp(0.875rem, 0.8491rem + 0.1105vi, 0.9375rem);
+      --sp-s: clamp(1.125rem, 1.0732rem + 0.221vi, 1.25rem);
+      --sp-m: clamp(1.6875rem, 1.6098rem + 0.3315vi, 1.875rem);
+      --sp-l: clamp(2.25rem, 2.1464rem + 0.442vi, 2.5rem);
+      --sp-xl: clamp(3.375rem, 3.2196rem + 0.663vi, 3.75rem);
+      --sp-2xl: clamp(4.5rem, 4.2928rem + 0.884vi, 5rem);
+      --sp-3xl: clamp(6.75rem, 6.4392rem + 1.326vi, 7.5rem);
+
+      --sp-4xs-3xs: clamp(0.3125rem, 0.3125rem + 0vi, 0.3125rem);
+      --sp-3xs-2xs: clamp(0.3125rem, 0.183rem + 0.5525vi, 0.625rem);
+      --sp-2xs-xs: clamp(0.5625rem, 0.4071rem + 0.663vi, 0.9375rem);
+      --sp-xs-s: clamp(0.875rem, 0.7196rem + 0.663vi, 1.25rem);
+      --sp-s-m: clamp(1.125rem, 0.8142rem + 1.326vi, 1.875rem);
+      --sp-m-l: clamp(1.6875rem, 1.3508rem + 1.4365vi, 2.5rem);
+      --sp-l-xl: clamp(2.25rem, 1.6285rem + 2.6519vi, 3.75rem);
+      --sp-xl-2xl: clamp(3.375rem, 2.7017rem + 2.8729vi, 5rem);
+      --sp-2xl-3xl: clamp(4.5rem, 3.2569rem + 5.3039vi, 7.5rem);
+
+      --sp-s-l: clamp(1.125rem, 0.5552rem + 2.4309vi, 2.5rem);
+      --sp-m-xl: clamp(1.6875rem, 0.8329rem + 3.6464vi, 3.75rem);
+
+      @media (prefers-color-scheme: dark) {
+        --c-accent: skyblue;
+      }
+    }
+  }
+  
+  @layer base {
+    :root {
+      color-scheme: light dark;
+
+      font-family: 'Inter', sans-serif;
+      font-size: var(--fs-0);
+      color: #171717;
+    }
+
+    body {
+      padding: var(--sp-m-l);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Anybody', serif;
+    }
+
+    h1 {
+      width: min-content;
+      font-size: var(--fs-3);
+    }
+    h2 { font-size: var(--fs-2); }
+    h3 { font-size: var(--fs-1); }
+    h4 { font-size: var(--fs-0); }
+
+    a {
+      color: var(--c-accent);
+    }
+
+    aside {
+      font-size: var(--fs--2);
+      font-style: italic;
+    }
+  }
+
+  @layer composition {
+    .flow {
+      & > * + * {
+        margin-block-start: var(--flow-space, var(--sp-s));
+      }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, min-content) auto;
+      gap: var(--sp-2xs-xs) var(--sp-xl);
+      
+      * { grid-column: -2 / -1; }
+      h1 { grid-column: 1; }
+      h2 { grid-column: 1; }
+      h3 { align-self: last baseline; }
+
+      @media (width < 960px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+  }
+  
+  @layer utility {
+    .as-pill {
+      padding: var(--sp-4xs) var(--sp-2xs);
+      border-radius: var(--sp-3xs);
+      background-color: var(--c-tokens, #a6a6a6);
+      line-height: 1;
+    }
+
+    .at-end {
+      justify-content: end;
+    }
+
+    .with-space {
+      gap: var(--sp-2xs);
+    }
+  }
+  
+  @layer block {
+    .project {
+      margin-block: var(--sp-xs) var(--sp-s);
+    }
+
+    .tokens {
+      margin-block-start: var(--sp-xs);
+      gap: var(--sp-4xs) var(--sp-3xs);
+
+      & > * {
+        font-size: var(--fs--2);
+        font-weight: 500;
+        letter-spacing: 0.075ex;
+        text-transform: uppercase;
+      }
+    }
+  }
+  @layer exception {
+    a[href^="http"]::after { content: "\00a0\2197"; }
+  }
+</style>
