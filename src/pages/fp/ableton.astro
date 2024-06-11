@@ -13,12 +13,12 @@
 	</head>
 
   <body>
-    <article><!-- define the grid for the whole page -->
+    <article class="page-structure">
       <h1 class="visually-hidden">About Ableton</h1>
 
       <!-- skip navigation link -->
 
-      <nav>
+      <nav class="full-width">
         <h2 class="visually-hidden">Main navigation</h2>
 
         <a href="#">
@@ -79,17 +79,17 @@
         </div>
       </nav>
 
-      <nav>
+      <nav class="full-width">
         <h2 class="visually-hidden">Quick links</h2>
         <a href="#">About</a>
         <a href="#">Jobs</a>
         <a href="#">Apprenticeships</a>
       </nav>
 
-      <main><!-- inherit the grid from article and add a row-gap -->
+      <main class="inherit-grid">
         <h2 class="visually-hidden">Who we are</h2>
 
-        <figure><!-- inherit the grid from main -->
+        <figure class="full-width">
           <img src="/frontend/img/fp/ableton/header.webp" alt="">
           
           <svg viewBox="0 0 430 104">
@@ -97,7 +97,7 @@
           </svg>
         </figure>
 
-        <section>
+        <section class="content-width">
           <p>
             We make Live, Push, Note and Link — unique software and hardware for music creation and
             performance. With these products, our community of users creates amazing things.
@@ -110,12 +110,12 @@
           </p>
         </section>
 
-        <figure>
+        <figure class="full-width">
           <img src="/frontend/img/fp/ableton/collage-1a.webp" alt="">
           <img src="/frontend/img/fp/ableton/collage-1b.webp" alt="">
         </figure>
 
-        <section>
+        <section class="content-width">
           <p>
             Making music isn&apos;t easy. It takes time, effort, and learning. But when you&apos;re
             in the flow, it&apos;s incredibly rewarding.
@@ -127,13 +127,13 @@
           </p>
         </section>
 
-        <figure>
+        <figure class="content-width">
           <img src="/frontend/img/fp/ableton/poster-why-ableton.webp" alt="">
 
           <figcaption>Why Ableton &mdash; Juanpe Bolivar</figcaption>
         </figure>
 
-        <section>
+        <section class="content-width">
           <p>
             We are more than 350 people from 30 different countries divided between our headquarters
             in Berlin and our offices in Los Angeles and Tokyo.
@@ -148,13 +148,13 @@
           </p>
         </section>
 
-        <figure>
+        <figure class="full-width">
           <img src="/frontend/img/fp/ableton/collage-2a.webp" alt="">
           <img src="/frontend/img/fp/ableton/collage-2b.webp" alt="">
           <img src="/frontend/img/fp/ableton/collage-2c.webp" alt="">
         </figure>
 
-        <section>
+        <section class="content-width">
           <p>
             We believe it takes focus to create truly outstanding instruments. We only work on a few
             products and we strive to make them great.
@@ -169,11 +169,11 @@
           </p>
         </section>
 
-        <figure>
+        <figure class="spaced-full-width">
           <img src="/frontend/img/fp/ableton/poster-makers.webp" alt="">
         </figure>
 
-        <section>
+        <section class="content-width">
           <p>
             We&apos;re passionate about what we do, but we&apos;re equally passionate about
             improving who we are.
@@ -193,12 +193,12 @@
           </p>
         </section>
 
-        <figure>
+        <figure class="full-width">
           <img src="/frontend/img/fp/ableton/collage-3a.webp" alt="">
           <img src="/frontend/img/fp/ableton/collage-3b.webp" alt="">
         </figure>
 
-        <section>
+        <section class="content-width">
           <p>
             We want our employees to love it here. Since we&apos;re looking for exceptional talent
             from around the world, we will do everything we can to make your transition as easy as
@@ -215,7 +215,7 @@
           </p>
         </section>
 
-        <section>
+        <section class="spaced-full-width">
           <img src="/frontend/img/fp/ableton/poster-jobs.webp" alt="">
 
           <div>
@@ -228,7 +228,7 @@
           </div>
         </section>
 
-        <footer><!-- inherit the grid from main -->
+        <footer class="inherit-grid footer-structure">
           <h2 class="visually-hidden">Site navigation</h2>
           
           <svg viewBox="0 0 430 104">
@@ -335,6 +335,68 @@
     body {
       font-family: 'Jost', 'Futura PT', sans-serif;
       font-size: var(--step-0);
+    }
+  }
+
+  @layer composition {
+    .page-structure {
+      container: page / inline-size;
+      
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+
+      .inherit-grid {
+        grid-column: 1 / -1;
+
+        display: grid;
+        grid-template-columns: subgrid;
+      }
+
+      .full-width {
+        grid-column: 1 / -1;
+      }
+
+      .spaced-full-width {
+        grid-column: 2 / -2;
+      }
+
+      .content-width {
+        grid-column: 2 / -2;
+
+        @container page (width > 48rem) {
+          grid-column: 3 / -3;
+        }
+
+        @container page (width > 80) {
+          grid-column: 4 / -4;
+        }
+      }
+    }
+
+    .footer-structure {
+      grid-column: 2 / -2;
+      
+      & > * {
+        grid-column: 2 / -2;
+      }
+
+      @container page (width > 64rem) {
+        grid-template-areas: 
+          '. s s s s s s s s s s .'
+          '. a a a b b b c c c c .'
+          '. d d d e e e . . . . .'
+          '. f f f f f f f f f f .'
+          ;
+
+        & > svg { grid-area: s; }
+        & > div:nth-of-type(1) { grid-area: c; }
+        & > div:nth-of-type(2) { grid-area: a; }
+        & > div:nth-of-type(3) { grid-area: b; }
+        & > div:nth-of-type(4) { grid-area: d; }
+        & > div:nth-of-type(5) { grid-area: e; }
+        & > div:nth-of-type(6) { grid-area: f; }
+        
+      }
     }
   }
 
