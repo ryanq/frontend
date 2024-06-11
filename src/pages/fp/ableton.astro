@@ -86,10 +86,10 @@
         <a href="#">Apprenticeships</a>
       </nav>
 
-      <main class="inherit-grid page-vertical-rhythm">
+      <main class="inherited-grid vertical-rhythm">
         <h2 class="visually-hidden">Who we are</h2>
 
-        <figure class="full-width">
+        <figure class="spaced-full-width pile">
           <img src="/frontend/img/fp/ableton/header.webp" alt="">
           
           <svg viewBox="0 0 430 104">
@@ -110,7 +110,7 @@
           </p>
         </section>
 
-        <figure class="collage inherit-grid" data-collage="1">
+        <figure class="collage inherited-grid" data-collage="1">
           <img src="/frontend/img/fp/ableton/collage-1a.webp" alt="">
           <img src="/frontend/img/fp/ableton/collage-1b.webp" alt="">
         </figure>
@@ -148,7 +148,7 @@
           </p>
         </section>
 
-        <figure class="collage inherit-grid" data-collage="2">
+        <figure class="collage inherited-grid" data-collage="2">
           <img src="/frontend/img/fp/ableton/collage-2a.webp" alt="">
           <img src="/frontend/img/fp/ableton/collage-2b.webp" alt="">
           <img src="/frontend/img/fp/ableton/collage-2c.webp" alt="">
@@ -193,7 +193,7 @@
           </p>
         </section>
 
-        <figure class="collage inherit-grid" data-collage="3">
+        <figure class="collage inherited-grid" data-collage="3">
           <img src="/frontend/img/fp/ableton/collage-3a.webp" alt="">
           <img src="/frontend/img/fp/ableton/collage-3b.webp" alt="">
         </figure>
@@ -228,7 +228,7 @@
           </div>
         </section>
 
-        <footer class="inherit-grid footer-structure">
+        <footer class="inherited-grid footer-structure">
           <h2 class="visually-hidden">Site navigation</h2>
           
           <svg viewBox="0 0 430 104">
@@ -363,7 +363,7 @@
       display: grid;
       grid-template-columns: repeat(12, 1fr);
 
-      .inherit-grid {
+      .inherited-grid {
         grid-column: 1 / -1;
 
         display: grid;
@@ -391,7 +391,7 @@
       }
     }
 
-    .page-vertical-rhythm { row-gap: calc(100cqi / 12); }
+    .vertical-rhythm { row-gap: calc(100cqi / 12); }
 
     .footer-structure {
       grid-column: 2 / -2;
@@ -428,6 +428,16 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+    }
+
+    .pile {
+      display: grid;
+      grid-template-areas: 'pile';
+      place-content: center;
+
+      & > * {
+        grid-area: pile;
       }
     }
 
