@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="https://indestructibletype.com/fonts/Jost.css" type="text/css" charset="utf-8" />
 	</head>
 
-  <body>
-    <article class="page-structure">
+  <body class="bg-gray constrain-width">
+    <article class="page-structure | bg-white">
       <h1 class="visually-hidden">About Ableton</h1>
 
       <!-- skip navigation link -->
@@ -453,6 +453,15 @@
   }
 
   @layer utility {
+    .bg-gray { background-color: var(--color-gray); }
+    .bg-white { background-color: white; }
+
+    .constrain-width {
+      display: grid;
+      grid-template-columns: minmax(auto, 100rem);
+      place-content: center;
+    }
+    
     .visually-hidden {
       border: 0;
       clip: rect(0 0 0 0);
