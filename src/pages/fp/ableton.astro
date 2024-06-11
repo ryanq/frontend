@@ -385,7 +385,7 @@
           grid-column: 3 / -3;
         }
 
-        @container page (width > 80) {
+        @container page (width > 80rem) {
           grid-column: 4 / -4;
         }
       }
@@ -402,10 +402,10 @@
 
       @container page (width > 64rem) {
         grid-template-areas: 
-          's s s s s s s s s s'
-          'a a a b b b c c c c'
-          'd d d e e e . . . .'
-          'f f f f f f f f f f'
+          '. s s s s s s s s s s .'
+          '. a a a b b b c c c c .'
+          '. d d d e e e . . . . .'
+          '. f f f f f f f f f f .'
           ;
 
         & > svg { grid-area: s; }
