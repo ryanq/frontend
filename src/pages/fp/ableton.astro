@@ -13,12 +13,12 @@
 	</head>
 
   <body class="bg-gray constrain-width">
-    <article class="page-structure | bg-white">
+    <article class="page-structure bg-white">
       <h1 class="visually-hidden">About Ableton</h1>
 
       <!-- skip navigation link -->
 
-      <nav class="full-width row">
+      <nav class="full-width row ui">
         <h2 class="visually-hidden">Main navigation</h2>
 
         <a href="#">
@@ -79,7 +79,7 @@
         </div>
       </nav>
 
-      <nav class="full-width row">
+      <nav class="full-width row ui">
         <h2 class="visually-hidden">Quick links</h2>
         <a href="#">About</a>
         <a href="#">Jobs</a>
@@ -97,10 +97,11 @@
           </svg>
         </figure>
 
-        <section class="content-width">
+        <section class="content-width feature">
           <p>
-            We make Live, Push, Note and Link — unique software and hardware for music creation and
-            performance. With these products, our community of users creates amazing things.
+            We make <a href="#">Live</a>, <a href="#">Push</a>, <a href="#">Note</a> and
+            <a href="#">Link</a> — unique software and hardware for music creation and performance.
+            With these products, our community of users creates amazing things.
           </p>
 
           <p>
@@ -115,7 +116,7 @@
           <img src="/frontend/img/fp/ableton/collage-1b.webp" alt="">
         </figure>
 
-        <section class="content-width">
+        <section class="content-width feature">
           <p>
             Making music isn&apos;t easy. It takes time, effort, and learning. But when you&apos;re
             in the flow, it&apos;s incredibly rewarding.
@@ -133,7 +134,7 @@
           <figcaption>Why Ableton &mdash; Juanpe Bolivar</figcaption>
         </figure>
 
-        <section class="content-width">
+        <section class="content-width feature">
           <p>
             We are more than 350 people from 30 different countries divided between our headquarters
             in Berlin and our offices in Los Angeles and Tokyo.
@@ -154,7 +155,7 @@
           <img src="/frontend/img/fp/ableton/collage-2c.webp" alt="">
         </figure>
 
-        <section class="content-width">
+        <section class="content-width feature">
           <p>
             We believe it takes focus to create truly outstanding instruments. We only work on a few
             products and we strive to make them great.
@@ -173,7 +174,7 @@
           <img src="/frontend/img/fp/ableton/poster-makers.webp" alt="">
         </figure>
 
-        <section class="content-width">
+        <section class="content-width feature">
           <p>
             We&apos;re passionate about what we do, but we&apos;re equally passionate about
             improving who we are.
@@ -198,7 +199,7 @@
           <img src="/frontend/img/fp/ableton/collage-3b.webp" alt="">
         </figure>
 
-        <section class="content-width">
+        <section class="content-width feature">
           <p>
             We want our employees to love it here. Since we&apos;re looking for exceptional talent
             from around the world, we will do everything we can to make your transition as easy as
@@ -228,7 +229,7 @@
           </div>
         </section>
 
-        <footer class="inherited-grid footer-structure">
+        <footer class="inherited-grid footer-structure ui">
           <h2 class="visually-hidden">Site navigation</h2>
           
           <svg viewBox="0 0 430 104">
@@ -322,6 +323,30 @@
       --step-3: clamp(1.728rem, 1.4852rem + 1.1952vi, 2.4414rem);
     }
 
+    /* @link https://utopia.fyi/space/calculator?c=325,16,1.2,1280,20,1.25,3,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+    :root {
+      --space-3xs: clamp(0.25rem, 0.2287rem + 0.1047vi, 0.3125rem);
+      --space-2xs: clamp(0.5rem, 0.4575rem + 0.2094vi, 0.625rem);
+      --space-xs: clamp(0.75rem, 0.6862rem + 0.3141vi, 0.9375rem);
+      --space-s: clamp(1rem, 0.9149rem + 0.4188vi, 1.25rem);
+      --space-m: clamp(1.5rem, 1.3724rem + 0.6283vi, 1.875rem);
+      --space-l: clamp(2rem, 1.8298rem + 0.8377vi, 2.5rem);
+      --space-xl: clamp(3rem, 2.7448rem + 1.2565vi, 3.75rem);
+      --space-2xl: clamp(4rem, 3.6597rem + 1.6754vi, 5rem);
+      --space-3xl: clamp(6rem, 5.4895rem + 2.5131vi, 7.5rem);
+
+      --space-3xs-2xs: clamp(0.25rem, 0.1224rem + 0.6283vi, 0.625rem);
+      --space-2xs-xs: clamp(0.5rem, 0.3511rem + 0.733vi, 0.9375rem);
+      --space-xs-s: clamp(0.75rem, 0.5798rem + 0.8377vi, 1.25rem);
+      --space-s-m: clamp(1rem, 0.7022rem + 1.466vi, 1.875rem);
+      --space-m-l: clamp(1.5rem, 1.1597rem + 1.6754vi, 2.5rem);
+      --space-l-xl: clamp(2rem, 1.4045rem + 2.9319vi, 3.75rem);
+      --space-xl-2xl: clamp(3rem, 2.3194rem + 3.3508vi, 5rem);
+      --space-2xl-3xl: clamp(4rem, 2.8089rem + 5.8639vi, 7.5rem);
+
+      --space-s-l: clamp(1rem, 0.4895rem + 2.5131vi, 2.5rem);
+    }
+
     :root {
       --color-blue: hsl(240 100% 50%);
       --color-blue-light: hsl(225 100% 85%);
@@ -335,6 +360,11 @@
     body {
       font-family: 'Jost', 'Futura PT', sans-serif;
       font-size: var(--step-0);
+    }
+
+    a {
+      color: var(--color-blue);
+      text-decoration: none;
     }
 
     button[type="button"] {
@@ -461,6 +491,10 @@
       grid-template-columns: minmax(auto, 100rem);
       place-content: center;
     }
+
+    .ui {
+      a { color: currentColor; }
+    }
     
     .visually-hidden {
       border: 0;
@@ -472,6 +506,19 @@
       position: absolute;
       width: 1px;
       white-space: nowrap;
+    }
+  }
+
+  @layer block {
+    .feature {
+      display: flex;
+      flex-flow: column nowrap;
+      gap: var(--space-s-m);
+      
+      & > p:first-of-type {
+        font-size: var(--step-1);
+        font-weight: 450;
+      }
     }
   }
 
