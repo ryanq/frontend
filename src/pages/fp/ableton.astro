@@ -677,6 +677,26 @@
 
   @layer exception {
     button[aria-owns="menu-drawer"] {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      gap: var(--space-2xs);
+
+      &::after {
+        content: '';
+
+        width: 0.5rem;
+        height: 1lh;
+
+        background-color: currentColor;
+
+        clip-path: polygon(0% 40%, 100% 40%, 50% 66%);
+      }
+
+      &[aria-expanded="true"]::after {
+        scale: -100%;
+      }
+      
       @container page (width < 64rem) {
         &[aria-expanded="true"] ~ .menu-drawer {
           translate: none;
@@ -687,6 +707,51 @@
     }
 
     button[aria-owns="more-menu"] {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      gap: var(--space-3xs);
+
+      &::after {
+        content: '';
+
+        height: 1lh;
+        aspect-ratio: 1 / 1;
+
+        background-color: currentColor;
+
+        --s: 0.6lh;
+        --t: 0.09lh;
+        
+        --s0: calc(50% - (var(--s) / 2));
+        --s1: calc(50% - var(--t) / 2);
+        --s2: calc(50% + var(--t) / 2);
+        --s3: calc(50% + (var(--s) / 2));
+        clip-path: polygon(
+          var(--s0) var(--s1),
+          var(--s1) var(--s1),
+          var(--s1) var(--s0),
+          var(--s2) var(--s0),
+          var(--s2) var(--s1),
+          var(--s3) var(--s1),
+          var(--s3) var(--s2),
+          var(--s2) var(--s2),
+          var(--s2) var(--s3),
+          var(--s1) var(--s3),
+          var(--s1) var(--s2),
+          var(--s0) var(--s2)
+        );
+      }
+
+      &[aria-expanded="true"]::after {
+        clip-path: polygon(
+          var(--s0) var(--s1),
+          var(--s3) var(--s1),
+          var(--s3) var(--s2),
+          var(--s0) var(--s2)
+        );
+      }
+      
       @container page (width < 64rem) { display: none; }
 
       @container page (width >= 64rem) {
