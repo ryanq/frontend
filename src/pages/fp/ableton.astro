@@ -311,6 +311,22 @@
 	</body>
 </html>
 
+<script>
+  /// Set up buttons that have an 'aria-expanded' attribute.
+  ///
+  /// Default the 'aria-expanded' attribute to 'false' and add an event listener to toggle between
+  /// 'false' and 'true' on a click event.
+  
+  let buttons = document.querySelectorAll('button[aria-expanded]')
+
+  buttons.forEach((button) => {
+    button.ariaExpanded = 'false'
+    button.addEventListener('click', () => {
+      button.ariaExpanded = button.ariaExpanded === 'false' ? 'true' : 'false'
+    })
+  })
+</script>
+
 <style>
   @import url(/css/reset.css) layer(reset);
 
