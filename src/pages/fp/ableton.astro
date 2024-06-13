@@ -329,6 +329,24 @@
   })
 </script>
 
+<script>
+  /// Reset toggle buttons when crossing the width where the transition between menu styles happens.
+
+  let query = window.matchMedia('(width < 64rem)')
+  query.addEventListener('change', (event) => {
+    let menu = document.querySelector('button[aria-expanded][aria-owns="menu-drawer"]')
+    let more = document.querySelector('button[aria-expanded][aria-owns="more-menu"]')
+
+    if (menu !== null) {
+      menu.ariaExpanded = 'false'
+    }
+
+    if (more !== null) {
+      more.ariaExpanded = 'false'
+    }
+  })
+</script>
+
 <style>
   @import url(/css/reset.css) layer(reset);
 
