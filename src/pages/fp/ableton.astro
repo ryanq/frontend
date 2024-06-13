@@ -54,27 +54,29 @@
             <a href="#">Apprenticeships</a>
 
             <h3>More from Ableton:</h3>
-            <div>
+            <div class="scroller">
               <div>
-                <a href="#">
-                  <h4>Loop</h4>
-                  <p>Watch talks, performances and features from Ableton's Summit for Music Makers.</p>
-                </a>
+                <div>
+                  <a href="#">
+                    <h4>Loop</h4>
+                    <p>Watch talks, performances and features from Ableton's Summit for Music Makers.</p>
+                  </a>
 
-                <a href="#">
-                  <h4>Learning Music</h4>
-                  <p>Learn the fundamentals of music making right in your browser.</p>
-                </a>
+                  <a href="#">
+                    <h4>Learning Music</h4>
+                    <p>Learn the fundamentals of music making right in your browser.</p>
+                  </a>
 
-                <a href="#">
-                  <h4>Learning Synths</h4>
-                  <p>Get started with synthesis using a web-based synth and accompanying lessons.</p>
-                </a>
+                  <a href="#">
+                    <h4>Learning Synths</h4>
+                    <p>Get started with synthesis using a web-based synth and accompanying lessons.</p>
+                  </a>
 
-                <a href="#">
-                  <h4>Making Music</h4>
-                  <p>Some tips from 74 Creative Strategies for Electronic Producers.</p>
-                </a>
+                  <a href="#">
+                    <h4>Making Music</h4>
+                    <p>Some tips from 74 Creative Strategies for Electronic Producers.</p>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -616,6 +618,42 @@
         font-size: var(--step-1);
         font-weight: 400;
         letter-spacing: 0.05ex;
+      }
+    }
+
+    .scroller {
+      position: relative;
+
+      padding-block-end: var(--space-xs);
+      width: 100%;
+
+      & > div {
+        overflow-x: scroll;
+        scrollbar-color: white;
+        scrollbar-gutter: stable;
+        scrollbar-width: thin;
+      }
+
+      & > div > div {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: var(--space-2xs);
+      }
+
+      @container page (width < 64rem) {
+        &::after {
+          content: '';
+          
+          position: absolute;
+          inset: 0;
+          inset-inline-start: auto;
+  
+          width: 5rem;
+  
+          background-image: linear-gradient(to right, hsl(240 100% 50% / 0), hsl(240 100% 50%));
+        }
+  
+        & > div > div > a { flex: 0 0 12rem; }
       }
     }
 
