@@ -18,68 +18,70 @@
 
       <!-- skip navigation link -->
 
-      <nav class="full-width row ui">
+      <nav class="main-menu | navbar | full-width row ui">
         <h2 class="visually-hidden">Main navigation</h2>
 
-        <a href="#">
+        <a href="#" class="logo">
           <svg viewBox="0 0 45 21">
             <path d="M0 0h3v21H0zm6 0h3v21H6zm6 0h3v21h-3zm6 0h3v21h-3zm6 18h21v3H24zm0-6h21v3H24zm0-6h21v3H24zm0-6h21v3H24z"/>
           </svg>
         </a>
 
-        <button type="button">Menu</button>
+        <button type="button" aria-owns="menu-drawer" aria-expanded="false">Menu</button>
 
-        <a href="#">Live</a>
-        <a href="#">Push</a>
-        <a href="#">Note</a>
-        <a href="#">Link</a>
-        <a href="#">Shop</a>
-        <a href="#">Packs</a>
-        <a href="#">Help</a>
+        <div class="menu-drawer" id="menu-drawer">
+          <a href="#">Live</a>
+          <a href="#">Push</a>
+          <a href="#">Note</a>
+          <a href="#">Link</a>
+          <a href="#">Shop</a>
+          <a href="#">Packs</a>
+          <a href="#">Help</a>
 
-        <button type="button">More</button>
+          <button type="button" aria-owns="more-menu" aria-expanded="false">More</button>
 
-        <a href="#">Try Live 12 for free</a>
-        <a href="#">Log in or register</a>
+          <a href="#">Try Live 12 for free</a>
+          <a href="#">Log in or register</a>
 
-        <div>
-          <h3>More on Ableton.com:</h3>
-          <a href="#">Blog</a>
-          <a href="#">Ableton for the Classroom</a>
-          <a href="#">Ableton for Colleges and Universities</a>
-          <a href="#">Certified Training</a>
-          <a href="#">About Ableton</a>
-          <a href="#">Jobs</a>
-          <a href="#">Apprenticeships</a>
+          <div class="more-menu" id="more-menu">
+            <h3>More on Ableton.com:</h3>
+            <a href="#">Blog</a>
+            <a href="#">Ableton for the Classroom</a>
+            <a href="#">Ableton for Colleges and Universities</a>
+            <a href="#">Certified Training</a>
+            <a href="#">About Ableton</a>
+            <a href="#">Jobs</a>
+            <a href="#">Apprenticeships</a>
 
-          <h3>More from Ableton:</h3>
-          <div>
+            <h3>More from Ableton:</h3>
             <div>
-              <a href="#">
-                <h4>Loop</h4>
-                <p>Watch talks, performances and features from Ableton's Summit for Music Makers.</p>
-              </a>
+              <div>
+                <a href="#">
+                  <h4>Loop</h4>
+                  <p>Watch talks, performances and features from Ableton's Summit for Music Makers.</p>
+                </a>
 
-              <a href="#">
-                <h4>Learning Music</h4>
-                <p>Learn the fundamentals of music making right in your browser.</p>
-              </a>
+                <a href="#">
+                  <h4>Learning Music</h4>
+                  <p>Learn the fundamentals of music making right in your browser.</p>
+                </a>
 
-              <a href="#">
-                <h4>Learning Synths</h4>
-                <p>Get started with synthesis using a web-based synth and accompanying lessons.</p>
-              </a>
+                <a href="#">
+                  <h4>Learning Synths</h4>
+                  <p>Get started with synthesis using a web-based synth and accompanying lessons.</p>
+                </a>
 
-              <a href="#">
-                <h4>Making Music</h4>
-                <p>Some tips from 74 Creative Strategies for Electronic Producers.</p>
-              </a>
+                <a href="#">
+                  <h4>Making Music</h4>
+                  <p>Some tips from 74 Creative Strategies for Electronic Producers.</p>
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </nav>
 
-      <nav class="full-width row ui">
+      <nav class="quick-links | navbar | full-width row ui">
         <h2 class="visually-hidden">Quick links</h2>
         <a href="#">About</a>
         <a href="#">Jobs</a>
@@ -369,19 +371,24 @@
 
     button[type="button"] {
       border-color: transparent;
-      background-color: transparent;
       padding: 0;
+
+      background-color: transparent;
+      color: currentColor;
+
       cursor: pointer;
     }
 
     button[type="submit"] {
       border-color: transparent;
+
       background-color: var(--color-blue);
       color: white;
     }
 
     input[type="email"] {
       border-color: transparent;
+
       background-color: var(--color-gray);
     }
   }
@@ -435,9 +442,17 @@
         @container page (width >= 80rem) { --space-content: 4; }
 
         grid-column: var(--space-content) / var(--space-content-end);
-  
+
       }
 
+    }
+
+    .navbar {
+      column-gap: var(--space-s-m);
+      row-gap: var(--space-s);
+
+      padding: var(--space-s);
+      padding-inline: var(--space-s-m);
     }
 
     .footer-structure {
@@ -509,6 +524,87 @@
   }
 
   @layer block {
+    .main-menu {
+      container: main-menu / inline-size;
+      align-items: center;
+      row-gap: var(--space-m);
+
+      & .logo,
+      & .logo svg {
+        width: 3.75rem;
+        height: 1.75rem;
+      }
+
+      &:has(button[aria-owns="menu-drawer"][aria-expanded="true"]) {
+        color: white;
+        fill: white;
+      }
+    }
+
+    .menu-drawer {
+      @container page (width < 64rem) {
+        position: absolute;
+        inset: 0;
+        inset-block-end: auto;
+
+        display: flex;
+        flex-flow: column nowrap;
+        row-gap: var(--space-xs);
+
+        padding-block-start: var(--space-2xl);
+        padding-inline: var(--space-s-m);
+        padding-block-end: var(--space-l);
+
+        background-color: var(--color-blue);
+
+        translate: 0 -105%;
+        z-index: -1;
+      }
+
+      @container page (width >= 64rem) {
+        display: contents;
+
+        & > button + a { color: var(--color-blue); }
+      }
+
+      & > button {
+        margin-right: auto;
+        color: var(--color-orange)
+      }
+
+      & > button + a + a { font-size: var(--step--1); }
+    }
+
+    .more-menu {
+      display: flex;
+
+      font-size: var(--step--1);
+      
+      @container page (width < 64rem) {
+        flex-flow: column nowrap;
+        row-gap: var(--space-xs);
+      }
+        
+      @container page (width >= 64rem) {
+        flex-flow: row wrap;
+        column-gap: var(--space-s-m);
+        row-gap: var(--space-s);
+      }
+
+      h3 {
+        flex: 1 0 100%;
+        font-size: var(--step-1);
+        font-weight: 400;
+        letter-spacing: 0.05ex;
+      }
+    }
+
+    .quick-links {
+      border-block-start: 2px solid var(--color-gray);
+
+      font-size: var(--step--1);
+    }
+
     .feature {
       display: flex;
       flex-flow: column nowrap;
@@ -522,6 +618,24 @@
   }
 
   @layer exception {
+    button[aria-owns="menu-drawer"] {
+      @container page (width < 64rem) {
+        &[aria-expanded="true"] ~ .menu-drawer {
+          translate: none;
+        }
+      }
+
+      @container page (width >= 64rem) { display: none; }
+    }
+
+    button[aria-owns="more-menu"] {
+      @container page (width < 64rem) { display: none; }
+
+      @container page (width >= 64rem) {
+        &[aria-expanded="false"] ~ .more-menu { display: none; }
+      }
+    }
+
     [data-collage="1"] {
       &::before {
         grid-column: 6 / 13;
