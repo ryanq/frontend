@@ -93,7 +93,7 @@
       <main class="inherited-grid vertical-rhythm">
         <h2 class="visually-hidden">Who we are</h2>
 
-        <figure class="spaced-full-width pile">
+        <figure class="masthead | spaced-full-width pile">
           <img src="/frontend/img/fp/ableton/header.webp" alt="">
 
           <svg viewBox="0 0 430 104">
@@ -447,7 +447,7 @@
     .pile {
       display: grid;
       grid-template-areas: 'pile';
-      place-content: center;
+      place-items: center;
 
       & > * {
         grid-area: pile;
@@ -683,6 +683,23 @@
       border-block-start: 2px solid var(--color-gray);
 
       font-size: var(--step--1);
+    }
+
+    .masthead {
+      height: calc(100svh - 6rem);
+
+      svg {
+        width: max(12rem, 40%);
+        height: auto;
+
+        fill: var(--color-orange);
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
 
     .feature {
