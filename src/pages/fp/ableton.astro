@@ -220,10 +220,10 @@
           </p>
         </section>
 
-        <section class="spaced-full-width">
+        <section class="two-up | spaced-full-width">
           <img src="/frontend/img/fp/ableton/poster-jobs.webp" alt="">
 
-          <div>
+          <div class="column | g-2xs">
             <p>
               We&apos;re really proud of the work we&apos;ve done so far. But there&apos;s so much
               more to come. If you&apos;d like to be a part of it, please join us.
@@ -694,6 +694,34 @@
       & > p:first-of-type {
         font-size: var(--step-1);
         font-weight: 450;
+      }
+    }
+
+    .two-up {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+
+      img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+
+        object-fit: cover;
+        object-position: right;
+      }
+
+      div {
+        display: grid;
+        place-content: center;
+
+        padding: var(--space-2xl);
+        
+        background-color: var(--color-blue-light);
+        
+        font-size: var(--step-1);
+      }
+
+      a::after {
+        content: '\00a0\203a';
       }
     }
 
