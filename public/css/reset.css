@@ -58,6 +58,7 @@ picture {
 
 /* Make SVGs default to a sane size for icons */
 svg {
+  width: 1lh;
   height: 1lh;
 }
 
