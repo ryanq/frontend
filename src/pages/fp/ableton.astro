@@ -285,8 +285,8 @@
           <div class="column | g-3xs">
             <h3>Language and Location</h3>
             <form class="row | g-3xs">
-              <select><option>English</option></select>
-              <select><option>United States</option></select>
+              <div><select><option>English</option></select></div>
+              <div><select><option>United States</option></select></div>
             </form>
           </div>
 
@@ -434,6 +434,40 @@
       height: 2rem;
 
       background-color: var(--color-gray);
+    }
+
+    div:has(> select:only-child) {
+      display: grid;
+      grid-template-areas: 'select';
+      padding: 0.25em 0.5em;
+      background-color: var(--color-gray);
+
+      &::after {
+        content: '';
+        grid-area: select;
+        justify-self: end;
+
+        width: 0.5rem;
+        height: 1lh;
+
+        background-color: currentColor;
+
+        clip-path: polygon(0% 40%, 100% 40%, 50% 66%);
+      }
+      
+      select {
+        grid-area: select;
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        padding-inline-end: 1em;
+        margin: 0;
+        font-family: inherit;
+        font-size: inherit;
+        cursor: inherit;
+        line-height: inherit;
+      }
     }
   }
 
