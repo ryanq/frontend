@@ -132,7 +132,7 @@
           </p>
         </section>
 
-        <figure class="content-width">
+        <figure class="video-thumbnail | content-width">
           <img src="/frontend/img/fp/ableton/poster-why-ableton.webp" alt="">
 
           <figcaption>Why Ableton &mdash; Juanpe Bolivar</figcaption>
@@ -729,6 +729,48 @@
         font-size: var(--step-1);
         font-weight: 450;
       }
+    }
+
+    .video-thumbnail {
+      --r: 2.5rem;
+      --d: calc(var(--r) * 2);
+      
+      display: grid;
+      gap: var(--space-3xs);
+
+      img {
+        grid-area: 1 / 1;
+      }
+
+      &::before {
+        content: '';
+        grid-area: 1 / 1;
+        place-self: center;
+
+        border-radius: 100%;
+        width: var(--d);
+        aspect-ratio: 1 / 1;
+
+        background-color: var(--color-blue);
+
+        z-index: 1;
+      }
+
+      &::after {
+        content: '';
+        grid-area: 1 / 1;
+        place-self: center;
+
+        width: var(--d);
+        aspect-ratio: 1 / 1;
+
+        background-color: white;
+
+        clip-path: polygon(37% 30%, 73% 50%, 37% 70%);
+        z-index: 1;
+      }
+      
+      figcaption { grid-area: 2 / 1; }
     }
 
     .two-up {
