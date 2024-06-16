@@ -2,5 +2,6 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-    base: '/frontend',
+    site: 'https://ryanq.github.io',
+    base: 'frontend',
 });
